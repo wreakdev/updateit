@@ -1,4 +1,6 @@
 # Package Manager Updater
+![GitHub release](https://img.shields.io/github/v/release/wpxq/updateit?style=for-the-badge&color=blue)
+![License](https://img.shields.io/github/license/wpxq/updateit?style=for-the-badge&color=green)
 
 ![updateit](https://github.com/wpxq/updateit/blob/main/updateit-go.png)
 
