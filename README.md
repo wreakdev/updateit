@@ -35,7 +35,7 @@ Fetch new version from releases
 Shows current version of updateit
 
 ## Requirements:
-* Go 1.26 or higher
+* Go 1.26 or higher (if you build it yourself)
 
 ## Setup
 ### Quick Install (Recommended)
