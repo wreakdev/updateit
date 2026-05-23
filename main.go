@@ -112,31 +112,51 @@ func showLog() {
 }
 
 func refresh() {
-	url := "https://raw.githubusercontent.com/wpxq/updateit/refs/heads/main/updateit.go"
+	home, err := os.UserHomeDir()
+	if err != nil {
+		fmt.Println("Error getting home directory:", err)
+		return
+	}
+
+	targetDir := filepath.Join(home, ".local", "bin")
+	targetFile := filepath.Join(targetDir, "updateit")
+	if runtime.GOOS == "windows" {
+		targetFile += ".exe"
+	}
+
+	logDir := filepath.Join(home, ".local", "share", "updateit")
+	os.MkdirAll(logDir, 0755)
+	url := fmt.Sprintf("https://github.com/wpxq/updateit/releases/latest/download/updateit-%s-%s", runtime.GOOS, runtime.GOARCH)
+	if runtime.GOOS == "windows" {
+		url += ".exe"
+	}
+
+	fmt.Printf("Downloading update for %s...\n", runtime.GOOS)
 	resp, err := http.Get(url)
 	if err != nil {
 		fmt.Println("Failed to fetch update: ", err)
 		return
 	}
 	defer resp.Body.Close()
-
-	targetDir := filepath.Join(os.Getenv("HOME"), ".local", "bin")
-	os.MkdirAll(targetDir, 0755)
-	targetFile := filepath.Join(targetDir, "updateit.go")
-	out, err := os.Create(targetFile)
+	if resp.StatusCode != 200 {
+		fmt.Printf("Failed to download: server returned status %d\n", resp.StatusCode)
+		return
+	}
+	tmpFile := targetFile + ".tmp"
+	out, err := os.Create(tmpFile)
 	if err != nil {
 		fmt.Println("Error creating file: ", err)
 		return
 	}
-	defer out.Close()
-
 	_, err = io.Copy(out, resp.Body)
+	out.Close()
 	if err != nil {
 		fmt.Println("Error saving file: ", err)
 		return
 	}
-	os.Chmod(targetFile, 0755)
-	fmt.Println("Succesfully refreshed updateit")
+	os.Chmod(tmpFile, 0755)
+	os.Rename(tmpFile, targetFile)
+	fmt.Println("Successfully refreshed updateit")
 }
 
 func updateit() {
@@ -146,7 +166,7 @@ func updateit() {
 	reader := bufio.NewReader(os.Stdin)
 	ans, _ := reader.ReadString('\n')
 	if strings.TrimSpace(strings.ToLower(ans)) != "y" {
-		fmt.Printf("[%s] Update cancelled by usery\n", start)
+		fmt.Printf("[%s] Update cancelled by user\n", start)
 		return
 	}
 
@@ -182,7 +202,7 @@ func main() {
 		commands := `
 updateit [--update] 	Updates all packages from all package managers
 updateit [--latest] 	Shows the latest update
-updateit [--refresh] 	Fetch new version from this github repo
+updateit [--refresh] 	Fetch new version from releases
 updateit [--version]	Shows current version of updateit
 `
 		fmt.Print(commands, "\n")

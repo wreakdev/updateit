@@ -1,14 +1,14 @@
 #!/bin/bash
-echo "Compiling updateit..."
-go build -o updateit .
-chmod +x updateit
+set -e
+OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+ARCH=$(uname -m)
+[ "$ARCH" = "x86_64" ] && ARCH="amd64"
+[ "$ARCH" = "aarch64" ] && ARCH="arm64"
+URL="https://github.com/wpxq/updateit/releases/latest/download/updateit-$OS-$ARCH"
+echo "Installing $URL..."
 mkdir -p "$HOME/.local/bin"
-cp updateit "$HOME/.local/bin/updateit"
 mkdir -p "$HOME/.local/share/updateit"
-LATEST_LOGGER="$HOME/.local/share/updateit/latest.log"
-
-if [ ! -f "$LATEST_LOGGER" ]; then
-    touch "$LATEST_LOGGER"
-fi
-
-echo "Full updateit installed"
+curl -L "$URL" -o "$HOME/.local/bin/updateit"
+chmod +x "$HOME/.local/bin/updateit"
+touch "$HOME/.local/share/updateit/latest.log"
+echo "Updateit successfully installed!"
