@@ -62,3 +62,6 @@ if the command is not found, add this to your `.bashrc` (or `.zshrc`):
 export PATH="$HOME/.local/bin:$PATH"
 ```
 ### Then save and run: ```source .bashrc``` (or `source .zshrc`)
+
+## Contributing
+Contributions are welcome! If you'd like to help improve **updateit**, please read the [CONTRIBUTING.md](CONTRIBUTING.md) file to understand how to get started, report bugs, or submit your own pull requests.
