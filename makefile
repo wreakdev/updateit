@@ -15,6 +15,8 @@ build_all:
 	GOOS=darwin GOARCH=arm64 go build -o $(BUILD_DIR)/$(BINARY_NAME)-darwin-arm64 .
 	# FreeBSD
 	GOOS=freebsd GOARCH=amd64 go build -o $(BUILD_DIR)/$(BINARY_NAME)-freebsd-amd64 .
+	# Linux ARM
+	GOOS=linux GOARCH=arm64 go build -o $(BUILD_DIR)/$(BINARY_NAME)-linux-arm64 .
 	@echo "Builds completed in $(BUILD_DIR)/"
 
 clean:
