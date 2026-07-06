@@ -1,7 +1,7 @@
 # Package Manager Updater
-![GitHub release](https://img.shields.io/github/v/release/wpxq/updateit?style=for-the-badge&color=blue)
-![License](https://img.shields.io/github/license/wpxq/updateit?style=for-the-badge&color=green)
-![GitHub all releases](https://img.shields.io/github/downloads/wpxq/updateit/total?style=for-the-badge&color=green)
+![GitHub release](https://img.shields.io/github/v/release/wreakdev/updateit?style=for-the-badge&color=blue)
+![License](https://img.shields.io/github/license/wreakdev/updateit?style=for-the-badge&color=green)
+![GitHub all releases](https://img.shields.io/github/downloads/wreakdev/updateit/total?style=for-the-badge&color=green)
 
 ![updateit](https://github.com/wreakdev/updateit/blob/main/updateit-go.png)
 
