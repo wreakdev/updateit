@@ -3,7 +3,7 @@
 ![License](https://img.shields.io/github/license/wpxq/updateit?style=for-the-badge&color=green)
 ![GitHub all releases](https://img.shields.io/github/downloads/wpxq/updateit/total?style=for-the-badge&color=green)
 
-![updateit](https://github.com/wpxq/updateit/blob/main/updateit-go.png)
+![updateit](https://github.com/wreakdev/updateit/blob/main/updateit-go.png)
 
 ---
 
