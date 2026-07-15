@@ -41,16 +41,16 @@ Shows current version of updateit
 ### Quick Install (Recommended)
 **Linux / MacOS**:
 ```bash
-curl -sSL https://raw.githubusercontent.com/wpxq/updateit/main/updateit_setup.sh | bash
+curl -sSL https://raw.githubusercontent.com/wreakdev/updateit/main/updateit_setup.sh | bash
 ```
 **Windows (PowerShell)**:
 ```powershell
-iwr https://raw.githubusercontent.com/wpxq/updateit/main/updateit_setup.ps1 -useb | iex
+iwr https://raw.githubusercontent.com/wreakdev/updateit/main/updateit_setup.ps1 -useb | iex
 ```
 ### Manual Install (From Source)
 if you prefer to clone and build yourself:
 ```bash
-git clone https://github.com/wpxq/updateit
+git clone https://github.com/wreakdev/updateit
 cd updateit
 chmod +x updateit_setup.sh
 ./updateit_setup.sh
